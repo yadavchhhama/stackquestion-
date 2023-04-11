@@ -1,0 +1,81 @@
+class Solution:
+    def nextLargerElement(self,arr,n):
+        st = [-1]
+        ans = []
+        for i in range(n-1,-1,-1):
+            if(st[-1] == -1 or st[-1]>arr[i]):
+                ans.append(st[-1])
+                st.append(arr[i])
+            else:
+                while(st[-1] != -1 and st[-1]<=arr[i]):
+                    st.pop()
+                ans.append(st[-1])
+                st.append(arr[i])
+        ans = ans[::-1]
+        return ans
+                
+                
+class Solution:
+    def help_classmate(self, arr, n):
+        # Your code goes here
+        # Return the list
+        st = [-1]
+        ans = []
+        for i in range(n-1,-1,-1):
+            if(st[-1] == -1 or st[-1]<arr[i]):
+                ans.append(st[-1])
+                st.append(arr[i])
+            else:
+                while(st[-1] != -1 and st[-1]>=arr[i]):
+                    st.pop()
+                ans.append(st[-1])
+                st.append(arr[i])
+        ans = ans[::-1]
+        return ans
+        
+  
+  class Solution:
+    def isValid(self, s: str) -> bool:
+        if len(s) % 2 != 0:
+            return False
+        dict = {'(' : ')', '[' : ']', '{' : '}'}
+        stack = []
+        for i in s:
+            if i in dict.keys():
+                stack.append(i)
+            else:
+                if stack == []:
+                    return False
+                a = stack.pop()
+                if i!= dict[a]:
+                    return False
+        return stack == []
+        
+        
+        def nextGreaterElementToLeft(arr):
+    n = len(arr)
+    s = []
+    v = [-1] * n
+
+    for i in range(n - 1, -1, -1):
+        while s and s[-1] <= arr[i]:
+            s.pop()
+        if s:
+            v[i] = s[-1]
+        s.append(arr[i])
+
+    return v
+    
+    def nextSmallerElementToLeft(arr):
+    n = len(arr)
+    s = []
+    v = [-1] * n
+
+    for i in range(n):
+        while s and s[-1] >= arr[i]:
+            s.pop()
+        if s:
+            v[i] = s[-1]
+        s.append(arr[i])
+
+    return v
